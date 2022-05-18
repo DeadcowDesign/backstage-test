@@ -1,0 +1,77 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: test-api
+  description: The Test API
+spec:
+  type: service
+  owner: test
+  lifecycle: production
+  system: test
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: test-api
+  description: The Test API
+spec:
+  type: openapi
+  owner: test
+  lifecycle: production
+  system: test
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: "Test API"
+      description: "The API interface for the product"
+      contact: 
+        - "CMS Team on company Slack"
+      version: "1.0"
+    servers: ""
+    paths:
+      # TEST
+      /v{version}/test/:
+        post:
+          tags:
+            - Test
+          summary: "Create a new resource. Returns resource ID"
+          parameters:
+            - $ref: '#/components/parameters/version'
+      /v{version}/test/{id}:
+        get:
+          tags:
+            - Test
+          summary: "Retrieve all test items for a given resource id"
+          parameters:
+            - $ref: '#/components/parameters/version'
+            - $ref: '#/components/parameters/id'
+        put:
+          tags:
+            - Test
+          summary: "Update the resource with the given ID"
+          parameters:
+            - $ref: '#/components/parameters/version'
+            - $ref: '#/components/parameters/id'
+        delete:
+          tags:
+            - Test
+          summary: "Delete the resource with the given ID"
+          parameters:
+            - $ref: '#/components/parameters/version'
+            - $ref: '#/components/parameters/id'
+
+
+    # COMPONENTS
+    components:
+      parameters:
+        version:
+          name: version
+          in: query
+          description: "**Version**. *Example: '1'*. The version of the API to be used"
+        id:
+          name: id
+          in: query
+          description: "**ID**. *Example: abc1234*. The target id of the resource"
+
+
