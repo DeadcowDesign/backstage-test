@@ -16,7 +16,6 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: test-api
-  description: The Test API
 spec:
   type: openapi
   owner: test
