@@ -2,20 +2,20 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: test-service
+  name: bs-test-service
   description: Provides API related to crud operations for the website
 spec:
   type: service
   owner: test
   lifecycle: production
   system: test
-  providesAPIs:
-    - test-api
+  providesApis:
+    - bs-test-api
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: test-api
+  name: bs-test-api
 spec:
   type: openapi
   owner: test
