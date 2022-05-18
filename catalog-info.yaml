@@ -9,6 +9,8 @@ spec:
   owner: test
   lifecycle: production
   system: test
+  providesAPIs:
+    - API:test-api
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
